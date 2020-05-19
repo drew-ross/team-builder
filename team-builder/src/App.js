@@ -60,7 +60,7 @@ function App() {
   return (
     <div className="App">
       <TeamListForm formValues={formValues} onInputChange={onInputChange} onSubmit={onSubmit} />
-      <TeamList teamList={teamList} setCurrentId={setCurrentId} />
+      <TeamList teamList={teamList} setCurrentId={setCurrentId} currentId={currentId} />
     </div>
   );
 }

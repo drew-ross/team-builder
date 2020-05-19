@@ -3,7 +3,7 @@ import React from 'react';
 const TeamListForm = ({ formValues, onInputChange, onSubmit }) => {
 
     return (
-        <form onSubmit={onSubmit}>
+        <form onSubmit={onSubmit} className='card'>
             <label>Name:
                 <input
                     name='name'
