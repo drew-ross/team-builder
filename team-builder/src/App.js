@@ -14,16 +14,18 @@ function App() {
   const [teamList, setTeamList] = useState([{ name: 'Drew', email: 'email@email.com', role: 'Frontend Engineer', id: uuid() }]);
   const [formValues, setFormValues] = useState(initialFormValues);
   const [currentId, setCurrentId] = useState(null);
+  const [isNotFilled, setIsNotFilled] = useState(false);
 
   const onSubmit = e => {
     e.preventDefault();
     if (!formValues.name.trim() || !formValues.email.trim() || !formValues.role.trim()) {
+      setIsNotFilled(true);
       return
     }
     if (!currentId) {
       const teamMember = { ...formValues, id: uuid() }
       setTeamList([...teamList, teamMember]);
-      console.log('NEW ID');
+      setIsNotFilled(false);
     } else {
       const newTeamList = teamList.map(member => {
         if (member.id === currentId) {
@@ -33,10 +35,8 @@ function App() {
         }
       });
       setTeamList([...newTeamList]);
-      console.log('teamList', teamList);
-      console.log('newTeamList', newTeamList);
-      console.log('OLD ID');
       setCurrentId(null);
+      setIsNotFilled(false);
     }
     setFormValues(initialFormValues);
   }
@@ -54,12 +54,13 @@ function App() {
     if (currentId) {
       const teamMember = getMemberByCurrentId();
       setFormValues(...teamMember);
+      setIsNotFilled(false);
     }
   }, [currentId])
 
   return (
     <div className="App">
-      <TeamListForm formValues={formValues} onInputChange={onInputChange} onSubmit={onSubmit} />
+      <TeamListForm formValues={formValues} onInputChange={onInputChange} onSubmit={onSubmit} isNotFilled={isNotFilled} />
       <TeamList teamList={teamList} setCurrentId={setCurrentId} currentId={currentId} />
     </div>
   );

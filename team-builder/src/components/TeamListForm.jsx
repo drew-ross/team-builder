@@ -1,10 +1,28 @@
 import React from 'react';
+import styled from 'styled-components';
 
-const TeamListForm = ({ formValues, onInputChange, onSubmit }) => {
+const StyledForm = styled.form`
+    max-width: 50%;
+    min-width: 500px;
+    padding: 1rem;
+    margin: 1rem auto;
+
+    outline: ${props => props.isNotFilled ? '2px solid red;' : null};
+
+    input, .button {
+        margin: .5rem;
+    }
+
+    input, select{
+        width: 30%;
+    }
+`;
+
+const TeamListForm = ({ formValues, onInputChange, onSubmit, isNotFilled }) => {
 
     return (
-        <form onSubmit={onSubmit} className='card'>
-            <label>Name:
+        <StyledForm isNotFilled={isNotFilled} onSubmit={onSubmit} className='card'>
+            <label>Name:&nbsp;
                 <input
                     name='name'
                     type='text'
@@ -14,7 +32,7 @@ const TeamListForm = ({ formValues, onInputChange, onSubmit }) => {
                     onChange={onInputChange}
                 />
             </label><br />
-            <label>Email:
+            <label>Email:&nbsp;
                 <input
                     name='email'
                     type='email'
@@ -24,7 +42,7 @@ const TeamListForm = ({ formValues, onInputChange, onSubmit }) => {
                     onChange={onInputChange}
                 />
             </label><br />
-            <label>Role:
+            <label>Role:&nbsp;
                 <select
                     name='role'
                     value={formValues.role}
@@ -37,8 +55,9 @@ const TeamListForm = ({ formValues, onInputChange, onSubmit }) => {
                     <option>UX</option>
                 </select>
             </label><br />
-            <button>Submit</button>
-        </form>
+            <button className='button'>Submit</button>
+            {isNotFilled && <p style={{color: 'red'}}>All fields must be filled</p>}
+        </StyledForm>
     )
 }
 
