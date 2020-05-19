@@ -7,8 +7,8 @@ const StyledForm = styled.form`
     min-width: 500px;
     padding: 1rem;
     margin: 1rem auto;
-
-    outline: ${props => props.isNotFilled ? '2px solid red;' : null};
+    background: white;
+    box-shadow: ${props => props.isNotFilled ? '0 0 10px red' : null};
 
     input:focus, select:focus {
         box-shadow: 0 0 5px blue;
@@ -33,6 +33,7 @@ const TeamListForm = ({ formValues, onInputChange, onSubmit, isNotFilled }) => {
         <StyledForm isNotFilled={isNotFilled} onSubmit={onSubmit} className='card'>
             <label>Name:&nbsp;
                 <input
+                    required
                     name='name'
                     type='text'
                     placeholder='Full Name'
@@ -43,6 +44,7 @@ const TeamListForm = ({ formValues, onInputChange, onSubmit, isNotFilled }) => {
             </label><br />
             <label>Email:&nbsp;
                 <input
+                    required
                     name='email'
                     type='email'
                     placeholder='user@email.com'
@@ -53,6 +55,7 @@ const TeamListForm = ({ formValues, onInputChange, onSubmit, isNotFilled }) => {
             </label><br />
             <label>Role:&nbsp;
                 <select
+                    required
                     name='role'
                     value={formValues.role}
                     onChange={onInputChange}
@@ -65,7 +68,7 @@ const TeamListForm = ({ formValues, onInputChange, onSubmit, isNotFilled }) => {
                 </select>
             </label><br />
             <StyledButton className='button'>Submit</StyledButton>
-            {isNotFilled && <p style={{color: 'red'}}>All fields must be filled</p>}
+            {isNotFilled && <p style={{ color: 'red' }}>All fields must be filled</p>}
         </StyledForm>
     )
 }

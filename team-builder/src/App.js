@@ -59,7 +59,7 @@ function App() {
   }, [currentId])
 
   return (
-    <div className="App">
+    <div className='App'>
       <header>
         <h1>Developer Team</h1>
       </header>

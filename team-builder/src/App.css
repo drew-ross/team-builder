@@ -1,3 +1,7 @@
+html {
+  background: rgb(167, 205, 228);
+}
+
 .App {
   text-align: center;
 }
@@ -40,4 +44,12 @@
 .card {
   border-radius: 5px;
   box-shadow: 0 0 5px;
+}
+
+h1, h2, h3 {
+  color: rgb(32, 32, 32);
+}
+
+header {
+  margin: 3rem 0;
 }
