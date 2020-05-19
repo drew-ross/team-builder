@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import StyledButton from './StyledButton';
 
 const StyledMember = styled.div`
     max-width: 50%;
@@ -8,7 +9,7 @@ const StyledMember = styled.div`
     margin: 1rem auto;
 
     h2 {
-        font-size: 2rem;
+        font-size: 1.6rem;
     }
 
     p {
@@ -34,7 +35,7 @@ const TeamMember = ({ member, setCurrentId, currentId }) => {
             <h2>{member.name}</h2>
             <p><span>Role:</span> {member.role}</p>
             <p><span>Email:</span> {member.email}</p>
-            <button onClick={editMember}>{currentId === member.id ? 'Editing' : 'Edit'}</button>
+            <StyledButton isEditing={(currentId === member.id)} onClick={editMember}>{currentId === member.id ? 'Editing' : 'Edit'}</StyledButton>
         </StyledMember>
     )
 }

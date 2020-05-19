@@ -60,6 +60,9 @@ function App() {
 
   return (
     <div className="App">
+      <header>
+        <h1>Developer Team</h1>
+      </header>
       <TeamListForm formValues={formValues} onInputChange={onInputChange} onSubmit={onSubmit} isNotFilled={isNotFilled} />
       <TeamList teamList={teamList} setCurrentId={setCurrentId} currentId={currentId} />
     </div>

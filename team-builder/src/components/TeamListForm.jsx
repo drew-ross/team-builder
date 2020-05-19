@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import StyledButton from './StyledButton';
 
 const StyledForm = styled.form`
     max-width: 50%;
@@ -9,12 +10,20 @@ const StyledForm = styled.form`
 
     outline: ${props => props.isNotFilled ? '2px solid red;' : null};
 
+    input:focus, select:focus {
+        box-shadow: 0 0 5px blue;
+    }
+
     input, .button {
         margin: .5rem;
     }
 
     input, select{
         width: 30%;
+        padding: .5rem;
+        border-radius: 4px;
+        border: 1px solid gray;
+        box-shadow: 0 0 2px;
     }
 `;
 
@@ -55,7 +64,7 @@ const TeamListForm = ({ formValues, onInputChange, onSubmit, isNotFilled }) => {
                     <option>UX</option>
                 </select>
             </label><br />
-            <button className='button'>Submit</button>
+            <StyledButton className='button'>Submit</StyledButton>
             {isNotFilled && <p style={{color: 'red'}}>All fields must be filled</p>}
         </StyledForm>
     )
