@@ -1,9 +1,13 @@
 import React from 'react';
-
-const TeamList = (props) => {
+import TeamMember from './TeamMember';
+const TeamList = ({ teamList }) => {
 
     return (
-        null
+        <div className='team-list'>
+            {teamList.map(member => {
+               return <TeamMember member={member} />
+            })}
+        </div>
     )
 }
 
